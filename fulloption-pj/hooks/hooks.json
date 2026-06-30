@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo [FullOption_pj] พิมพ์ /FullOption_pj <งาน> เพื่อรัน workflow ครบวงจร (โหลดกฎโปรเจกต์ -> เลือกบทบาท PM/SA/DEV/QC -> ทำงาน -> verify + อัปเดตความรู้). /FullOption_pj status เพื่อดูสถานะ"
+          }
+        ]
+      }
+    ]
+  }
+}

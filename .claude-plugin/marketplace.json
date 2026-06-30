@@ -1,0 +1,17 @@
+{
+  "name": "jmt-workflow",
+  "owner": {
+    "name": "JMT Network",
+    "email": "dachchai.t@jmtnetwork.co.th"
+  },
+  "metadata": {
+    "description": "Marketplace กลางของทีม — plugin workflow ที่ติดตั้งครั้งเดียวใช้ได้ทุกโปรเจกต์"
+  },
+  "plugins": [
+    {
+      "name": "fulloption-pj",
+      "source": "./fulloption-pj",
+      "description": "คำสั่งเดียว /FullOption_pj รัน workflow ครบวงจร (โหลดกฎโปรเจกต์ → เลือกบทบาท PM/SA/DEV/QC → ทำงาน → verify + อัปเดตความรู้) ปรับตามแต่ละโปรเจกต์อัตโนมัติ"
+    }
+  ]
+}
