@@ -29,6 +29,7 @@
 ## เรียกใช้ด้วยคำสั่งเดียว
 ติดตั้ง plugin [`fulloption-pj`](https://github.com/fluke351/FullOption_pj) แล้วใช้:
 ```
+/Rules                   # ดูคำสั่ง+กฎทั้งหมด + อธิบายแต่ละองค์ประกอบ
 /FullOption_pj <งาน>     # รัน workflow ครบวงจร (before → บทบาท → ทำงาน → after)
 /FullOption_pj status    # ดูสถานะ branch/งานค้าง
 ```

@@ -1,6 +1,6 @@
 {
   "name": "fulloption-pj",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Full-option project workflow — คำสั่งเดียว /FullOption_pj รัน workflow ครบวงจรในโปรเจกต์ใดก็ได้: โหลดกฎของโปรเจกต์ที่เปิดอยู่ (CLAUDE.md/PROJECT_RULES.md/Skills/Hooks) → เลือกบทบาท PM/SA/DEV/QC → ทำงานตามมาตรฐาน → verify + อัปเดต Skill/Memory/Docs โดยไม่สร้างซ้ำ. มีโหมด init สำหรับวางโครงความรู้ + กฎพื้นฐานให้โปรเจกต์ใหม่",
   "author": {
     "name": "JMT Network",
