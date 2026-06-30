@@ -27,9 +27,6 @@
 **กฎเหล็ก:** อัปเดตความรู้แบบ **ไม่สร้างข้อมูลซ้ำ** — ถ้ามีหัวข้อใกล้เคียงอยู่แล้วให้แก้ไฟล์เดิมและปรับ `updated:` ไม่สร้างไฟล์ใหม่ซ้อน
 
 ## เรียกใช้ด้วยคำสั่งเดียว
-ติดตั้ง plugin [`fulloption-pj`](https://github.com/fluke351/FullOption_pj) แล้วใช้:
-```
-/Rules                   # ดูคำสั่ง+กฎทั้งหมด + อธิบายแต่ละองค์ประกอบ
-/FullOption_pj <งาน>     # รัน workflow ครบวงจร (before → บทบาท → ทำงาน → after)
-/FullOption_pj status    # ดูสถานะ branch/งานค้าง
-```
+ติดตั้ง plugin [`fulloption-pj`](https://github.com/fluke351/FullOption_pj) แล้ว:
+- พิมพ์ **`/Rules`** เพื่อดูคำสั่งและกฎทั้งหมด
+- เริ่มงานด้วย **`/FullOption_pj <งาน>`**
