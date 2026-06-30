@@ -1,6 +1,6 @@
 ---
 description: คำสั่งเดียวจบทั้ง workflow — ปรับตามกฎของโปรเจกต์ที่เปิดอยู่อัตโนมัติ (โหลด context → เลือกบทบาท → ทำงาน → verify + อัปเดตความรู้)
-argument-hint: <คำอธิบายงาน> | status | commit | release
+argument-hint: <คำอธิบายงาน> | init | status | commit | release
 ---
 
 # /FullOption_pj — Full-Option Project Workflow (One Command)
@@ -14,6 +14,7 @@ argument-hint: <คำอธิบายงาน> | status | commit | release
 
 ## ขั้น 0 — แยกโหมดจาก argument
 
+- ขึ้นต้นด้วย `init` → **โหมด INIT (scaffold)**: วางโครงความรู้ + กฎพื้นฐานให้โปรเจกต์นี้ (ดูหัวข้อ "โหมด INIT" ด้านล่าง) แล้วจบ — ไม่ทำขั้น 1–4
 - `$ARGUMENTS` ว่าง หรือ = `status` → **โหมด STATUS**: `git branch --show-current`, `git status -s`, สรุปงานค้าง แล้วถามผู้ใช้ว่าจะทำอะไรต่อ จบ
 - ขึ้นต้นด้วย `commit` → ทำตาม `Hooks/commit.md` ของโปรเจกต์ถ้ามี; ถ้าไม่มีให้ใช้มาตรฐาน: ไม่ commit เข้า main ตรง ๆ, ตรวจ diff ไม่มี secret, Conventional Commits
 - ขึ้นต้นด้วย `release` → ทำตาม `Hooks/release.md` ถ้ามี; เป็น action ย้อนยาก **ต้องขออนุมัติผู้ใช้ก่อนเสมอ**
@@ -78,3 +79,26 @@ argument-hint: <คำอธิบายงาน> | status | commit | release
 5. ถ้าผู้ใช้สั่ง commit → ทำต่อตามโหมด commit
 
 **สรุปปิดงาน:** สิ่งที่ทำ, ผลทดสอบตามจริง, ไฟล์ความรู้ที่อัปเดต, ขั้นถัดไปที่แนะนำ
+
+---
+
+## โหมด INIT — วางโครงความรู้ + กฎพื้นฐาน (`/FullOption_pj init`)
+
+ใช้กับโปรเจกต์ใหม่ที่ยังไม่มีโครงความรู้ — สร้างโฟลเดอร์ `Skills/ Agents/ Hooks/` + `CLAUDE.md` + `PROJECT_RULES.md` พร้อมกฎพื้นฐาน
+
+1. **สำรวจของเดิม** — เช็กว่ามี `CLAUDE.md`, `PROJECT_RULES.md`, `Skills/`, `Hooks/`, `Agents/` อยู่แล้วหรือไม่
+2. **ตรวจบริบทโปรเจกต์** — ชื่อโปรเจกต์ (จากชื่อโฟลเดอร์/`package.json`) และ stack จริง (`package.json`/`requirements.txt`/`*.csproj`/`go.mod` ฯลฯ)
+3. **คัดลอก baseline templates** จาก `${CLAUDE_PLUGIN_ROOT}/templates/` ไปวางที่รากโปรเจกต์:
+   - `CLAUDE.md`, `PROJECT_RULES.md`
+   - `Skills/README.md`, `Skills/_template.md`
+   - `Hooks/README.md`, `Hooks/before-task.md`, `Hooks/after-task.md`, `Hooks/commit.md`, `Hooks/release.md`
+   - `Agents/README.md`
+4. **ไม่ทับของเดิม** — ไฟล์/โฟลเดอร์ใดมีอยู่แล้วให้ **ข้าม** และรายงานว่าข้าม (กฎเหล็ก: ไม่สร้างซ้ำ/ไม่เขียนทับความรู้เดิม)
+5. **เติม placeholder** ใน `CLAUDE.md`/`PROJECT_RULES.md` ที่คัดลอกใหม่:
+   - `{{PROJECT_NAME}}` → ชื่อโปรเจกต์จริง
+   - `{{STACK}}` → stack ที่ตรวจพบ
+   - ส่วน `TODO` ที่เดาได้จากโค้ดให้เติมให้, ที่เดาไม่ได้ให้คงไว้เป็น `TODO` เพื่อให้ผู้ใช้กรอก
+6. **ความปลอดภัย** — ตรวจว่ามี `.gitignore` ที่ครอบ `.env`/`*.key`/credential; ถ้ายังไม่มีหรือยังไม่ครอบ ให้สร้าง/เพิ่มให้ (อิงจาก stack ที่ตรวจพบ)
+7. **รายงานผล** — ลิสต์ไฟล์ที่สร้าง / ที่ข้าม + แนะนำให้ผู้ใช้รีวิวส่วน `TODO` ใน `PROJECT_RULES.md` แล้ว commit
+
+> หลัง init แล้ว ครั้งต่อ ๆ ไป `/FullOption_pj <งาน>` จะอ่านกฎเหล่านี้อัตโนมัติในขั้น 1

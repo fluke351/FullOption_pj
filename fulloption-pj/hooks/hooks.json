@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo [FullOption_pj] พิมพ์ /FullOption_pj <งาน> เพื่อรัน workflow ครบวงจร (โหลดกฎโปรเจกต์ -> เลือกบทบาท PM/SA/DEV/QC -> ทำงาน -> verify + อัปเดตความรู้). /FullOption_pj status เพื่อดูสถานะ"
+            "command": "echo [FullOption_pj] /FullOption_pj <งาน> = workflow ครบวงจร (โหลดกฎโปรเจกต์ -> เลือกบทบาท PM/SA/DEV/QC -> ทำงาน -> verify + อัปเดตความรู้). โปรเจกต์ใหม่: /FullOption_pj init (วางโครงความรู้+กฎพื้นฐาน). ดูสถานะ: /FullOption_pj status"
           }
         ]
       }
